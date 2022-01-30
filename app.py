@@ -67,6 +67,9 @@ def ask_who(message, say):
 def ask_who(message, say):
     say(text = "*Resources* \n - Financial Aid `https://uwaterloo.ca/student-awards-financial-aid/` \n - Textbooks `https://open.umn.edu/opentextbooks` \n - Course Advisor `http://catalog.mit.edu/mit/resources/advising-support/`")
 
+@app.message(re.compile("^made by$"))
+def ask_who(message, say):
+    say(text = "*Made By:* \n- Wesley C. \n - Shaun W.\n - McKenna K. \n - Sushrut D. \n - Danny C.")
 
 
 @app.message(re.compile("^remind me$"))
