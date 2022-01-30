@@ -17,7 +17,7 @@ SLACK_BOT_TOKEN = os.environ["SLACK_BOT_TOKEN"]
 app = App(token=SLACK_BOT_TOKEN, name="Joke Bot")
 
 
-
+#returns joke
 @app.message("^get joke?")
 def show_random_joke(message, say):
     #send a random pyjoke back
@@ -30,17 +30,19 @@ def show_random_joke(message, say):
 
     say(text=joke, channel=talk_channel )
 
+
 @app.action("user_select")
 def select_user(ack, action, respond):
     ack()
     respond(f"You selected <@{action['selected_user']}>")
 
+#knock knock joke
 @app.message(re.compile("^knock knock$"))
 def ask_who(message, say):
     say("_Who's there?_")
 
 
-
+#hello user
 @app.message(re.compile("hello"))
 def message_hello(message, say):
     # say() sends a message to the channel where the event was triggered
@@ -59,6 +61,7 @@ def message_hello(message, say):
         text=f"Hey there <@{message['user']}>!"
     )
 
+#get help menu
 @app.message(re.compile("^get help$"))
 def ask_help(message, say):
     say(text = "*Help Commands* \n - Office Hours `get office hours` returns the professor/TA's office hours\n - Resources `get resoures` returns online university resources \n - Remind Me `remind me` prompts you to set a reminder for a certain date \n - Joke  typing `get joke` returns a randomly generated joke")
@@ -71,7 +74,7 @@ def ask_resource(message, say):
 def made_by(message, say):
     say(text = "*Made By:* \n- Wesley C. \n - Shaun W.\n - McKenna K. \n - Sushrut D. \n - Danny C.")
 
-
+#gets reminder
 @app.message(re.compile("^remind me$"))
 def remind_me(event, say):
     blocks = [{
@@ -86,6 +89,7 @@ def remind_me(event, say):
         }]
     say(blocks=blocks, text="Pick a date for me to remind you")
 
+#we will win
 @app.message(re.compile("^we will win$"))
 def hoya(event, say):
     blocks = [
@@ -106,6 +110,7 @@ def hoya(event, say):
     ]
     say(blocks=blocks, text="Pick a date for me to remind you")
 
+#office hours
 @app.message(re.compile('^get office hours$'))
 def office_hours(event, say):
     blocks= [
@@ -122,6 +127,7 @@ def office_hours(event, say):
     ]
     say(blocks=blocks, text="Pick a date for me to remind you")
 
+#office hours v2
 @app.command("/officy")
 def officy(say, ack, body):
     ack("I got it!")
@@ -137,6 +143,7 @@ def officy(say, ack, body):
     fpointer.close()
     say(text=prof_hours)
 
+#app home
 @app.event("app_home_opened")
 def app_home_opened(event, client, logger):
     user_id = event["user"]
