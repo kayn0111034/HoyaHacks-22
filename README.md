@@ -11,7 +11,7 @@ This function retrieves the office hours of a professor or TA
 Gets online resources provided by the university, such as financial aid websites, university textbooks, and more!
 - `remind me`
 Allows user to set a reminder for a certain date to help with workflow
-- + A bunch of hidden easter eggs! Test it yourself to find out! 
+- A bunch of hidden easter eggs! Test it yourself to find out! 
 
 
 ## Tools & Languages
