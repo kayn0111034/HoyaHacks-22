@@ -60,20 +60,20 @@ def message_hello(message, say):
     )
 
 @app.message(re.compile("^get help$"))
-def ask_who(message, say):
+def ask_help(message, say):
     say(text = "*Help Commands* \n - Office Hours `get office hours` returns the professor/TA's office hours\n - Resources `get resoures` returns online university resources \n - Remind Me `remind me` prompts you to set a reminder for a certain date \n - Joke  typing `get joke` returns a randomly generated joke")
 
 @app.message(re.compile("^get resources$"))
-def ask_who(message, say):
+def ask_resource(message, say):
     say(text = "*Resources* \n - Financial Aid `https://uwaterloo.ca/student-awards-financial-aid/` \n - Textbooks `https://open.umn.edu/opentextbooks` \n - Course Advisor `http://catalog.mit.edu/mit/resources/advising-support/`")
 
 @app.message(re.compile("^made by$"))
-def ask_who(message, say):
+def made_by(message, say):
     say(text = "*Made By:* \n- Wesley C. \n - Shaun W.\n - McKenna K. \n - Sushrut D. \n - Danny C.")
 
 
 @app.message(re.compile("^remind me$"))
-def show_datepicker(event, say):
+def remind_me(event, say):
     blocks = [{
           "type": "section",
           "text": {"type": "mrkdwn", "text": "Pick a date for me to remind you"},
@@ -87,7 +87,7 @@ def show_datepicker(event, say):
     say(blocks=blocks, text="Pick a date for me to remind you")
 
 @app.message(re.compile("^we will win$"))
-def cat(event, say):
+def hoya(event, say):
     blocks = [
         {
             "type": "context",
@@ -106,12 +106,8 @@ def cat(event, say):
     ]
     say(blocks=blocks, text="Pick a date for me to remind you")
 
-@app.event(("app_mention"))
-def event_test(say):
-    say("why are you running") 
-
 @app.message(re.compile('^get office hours$'))
-def bat(event, say):
+def office_hours(event, say):
     blocks= [
         {
             "type": "image",
@@ -127,7 +123,7 @@ def bat(event, say):
     say(blocks=blocks, text="Pick a date for me to remind you")
 
 @app.command("/officy")
-def office_hours(say, ack, body):
+def officy(say, ack, body):
     ack("I got it!")
     name = body["text"]
     prof_hours = 'hours not available'
