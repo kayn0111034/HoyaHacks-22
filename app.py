@@ -61,7 +61,7 @@ def message_hello(message, say):
 
 @app.message(re.compile("^get help$"))
 def ask_who(message, say):
-    say(text = "*Help Commands* \n - Office Hours `get office hours` returns the professor/TA's office hours\n - Resources `get resoures` returns online university resources \n - Remind Me `remind me` prompts you to set a reminder for a certain date \n - Todo List \n - Joke  typing `get joke` returns a randomly generated joke")
+    say(text = "*Help Commands* \n - Office Hours `get office hours` returns the professor/TA's office hours\n - Resources `get resoures` returns online university resources \n - Remind Me `remind me` prompts you to set a reminder for a certain date \n - Joke  typing `get joke` returns a randomly generated joke")
 
 @app.message(re.compile("^get resources$"))
 def ask_who(message, say):
