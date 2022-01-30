@@ -18,7 +18,7 @@ app = App(token=SLACK_BOT_TOKEN, name="Joke Bot")
 
 
 
-@app.message("^joke?")
+@app.message("^get joke?")
 def show_random_joke(message, say):
     #send a random pyjoke back
     
@@ -61,7 +61,13 @@ def message_hello(message, say):
 
 @app.message(re.compile("^get help$"))
 def ask_who(message, say):
-    say(text = "*Help Commands* \n - Office Hours `get office hours` returns the professor/TA's office hours\n - Remind Me `remind me` prompts you to set a reminder for a certain date- \n - Todo List \n - Joke  typing `joke` returns a randomly generated joke")
+    say(text = "*Help Commands* \n - Office Hours `get office hours` returns the professor/TA's office hours\n - Resources `get resoures` returns online university resources \n - Remind Me `remind me` prompts you to set a reminder for a certain date \n - Todo List \n - Joke  typing `get joke` returns a randomly generated joke")
+
+@app.message(re.compile("^get resources$"))
+def ask_who(message, say):
+    say(text = "*Resources* \n - Financial Aid `https://uwaterloo.ca/student-awards-financial-aid/` \n - Textbooks `https://open.umn.edu/opentextbooks` \n - Course Advisor `http://catalog.mit.edu/mit/resources/advising-support/`")
+
+
 
 @app.message(re.compile("^remind me$"))
 def show_datepicker(event, say):
