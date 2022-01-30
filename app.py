@@ -126,6 +126,131 @@ def bat(event, say):
     ]
     say(blocks=blocks, text="Pick a date for me to remind you")
 
+@app.event("app_home_opened")
+def app_home_opened(event, client, logger):
+    user_id = event["user"]
+
+    
+        # Call the views.publish method using the WebClient passed to listeners
+    result = client.views_publish(
+            user_id=user_id,
+            view={
+                # Home tabs must be enabled in your app configuration page under "App Home"
+                # and your app must be subscribed to the app_home_opened event
+                "type": "home",
+                "blocks": [
+		{
+			"type": "header",
+			"text": {
+				"type": "plain_text",
+				"text": "Welcome to your University Slackspace :office: <@{}>".format(user_id),
+				"emoji": True
+			}
+		},
+		{
+			"type": "context",
+			"elements": [
+				{
+					"type": "image",
+					"image_url": "https://pbs.twimg.com/profile_images/625633822235693056/lNGUneLX_400x400.jpg",
+					"alt_text": "cute cat"
+				},
+				{
+					"type": "mrkdwn",
+					"text": "*Cat* has approved this message."
+				}
+			]
+		},
+		{
+			"type": "divider"
+		},
+		{
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": "This is a section block with a button."
+			},
+			"accessory": {
+				"type": "button",
+				"text": {
+					"type": "plain_text",
+					"text": "Click Me",
+					"emoji": True
+				},
+				"value": "click_me_123",
+				"url": "https://google.com",
+				"action_id": "button-action"
+			}
+		},
+		{
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": "This is a section block with a button."
+			},
+			"accessory": {
+				"type": "button",
+				"text": {
+					"type": "plain_text",
+					"text": "Click Me",
+					"emoji": True
+				},
+				"value": "click_me_123",
+				"url": "https://google.com",
+				"action_id": "button-action"
+			}
+		},
+		{
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": "This is a section block with a button."
+			},
+			"accessory": {
+				"type": "button",
+				"text": {
+					"type": "plain_text",
+					"text": "Click Me",
+					"emoji": True
+				},
+				"value": "click_me_123",
+				"url": "https://google.com",
+				"action_id": "button-action"
+			}
+		},
+		{
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": "This is a section block with a button."
+			},
+			"accessory": {
+				"type": "button",
+				"text": {
+					"type": "plain_text",
+					"text": "Click Me",
+					"emoji": True
+				},
+				"value": "click_me_123",
+				"url": "https://google.com",
+				"action_id": "button-action"
+			}
+		},
+		{
+			"type": "image",
+			"image_url": "https://i1.wp.com/thetempest.co/wp-content/uploads/2017/08/The-wise-words-of-Michael-Scott-Imgur-2.jpg?w=1024&ssl=1",
+			"alt_text": "inspiration"
+		},
+		{
+			"type": "divider"
+		}
+	],
+            },
+        )
+    logger.info(result)
+
+
+    
 
 def main():
     handler = SocketModeHandler(app, SLACK_APP_TOKEN)
