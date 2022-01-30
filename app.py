@@ -126,6 +126,21 @@ def bat(event, say):
     ]
     say(blocks=blocks, text="Pick a date for me to remind you")
 
+@app.command("/officy")
+def office_hours(say, ack, body):
+    ack("I got it!")
+    name = body["text"]
+    prof_hours = 'hours not available'
+    fpointer = open('office-hours.txt', "r")
+
+    for i in fpointer.readlines():
+        line = re.findall(name, i)
+        if line:
+            prof_hours = i 
+
+    fpointer.close()
+    say(text=prof_hours)
+
 @app.event("app_home_opened")
 def app_home_opened(event, client, logger):
     user_id = event["user"]
@@ -143,7 +158,7 @@ def app_home_opened(event, client, logger):
 			"type": "header",
 			"text": {
 				"type": "plain_text",
-				"text": "Welcome to your University Slackspace :office: <@{}>".format(user_id),
+				"text": "Welcome to your University Slackspace 🏰",
 				"emoji": True
 			}
 		},
@@ -168,13 +183,49 @@ def app_home_opened(event, client, logger):
 			"type": "section",
 			"text": {
 				"type": "mrkdwn",
-				"text": "This is a section block with a button."
+				"text": "*University Updates*"
 			},
 			"accessory": {
 				"type": "button",
 				"text": {
 					"type": "plain_text",
-					"text": "Click Me",
+					"text": "News",
+					"emoji": True
+				},
+				"value": "News",
+				"url": "https://www.georgetown.edu/news/",
+				"action_id": "button-action"
+			}
+		},
+		{
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": "*Dining Hall/Food Options*"
+			},
+			"accessory": {
+				"type": "button",
+				"text": {
+					"type": "plain_text",
+					"text": "Menu",
+					"emoji": True
+				},
+				"value": "click_me_123",
+				"url": "https://www.hoyaeats.com/menu-hours/",
+				"action_id": "button-action"
+			}
+		},
+		{
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": "*Report Absence*"
+			},
+			"accessory": {
+				"type": "button",
+				"text": {
+					"type": "plain_text",
+					"text": "Absence",
 					"emoji": True
 				},
 				"value": "click_me_123",
@@ -186,59 +237,23 @@ def app_home_opened(event, client, logger):
 			"type": "section",
 			"text": {
 				"type": "mrkdwn",
-				"text": "This is a section block with a button."
+				"text": "*Weather Forecast*"
 			},
 			"accessory": {
 				"type": "button",
 				"text": {
 					"type": "plain_text",
-					"text": "Click Me",
+					"text": "Weather",
 					"emoji": True
 				},
 				"value": "click_me_123",
-				"url": "https://google.com",
-				"action_id": "button-action"
-			}
-		},
-		{
-			"type": "section",
-			"text": {
-				"type": "mrkdwn",
-				"text": "This is a section block with a button."
-			},
-			"accessory": {
-				"type": "button",
-				"text": {
-					"type": "plain_text",
-					"text": "Click Me",
-					"emoji": True
-				},
-				"value": "click_me_123",
-				"url": "https://google.com",
-				"action_id": "button-action"
-			}
-		},
-		{
-			"type": "section",
-			"text": {
-				"type": "mrkdwn",
-				"text": "This is a section block with a button."
-			},
-			"accessory": {
-				"type": "button",
-				"text": {
-					"type": "plain_text",
-					"text": "Click Me",
-					"emoji": True
-				},
-				"value": "click_me_123",
-				"url": "https://google.com",
+				"url": "https://www.accuweather.com/en/us/georgetown/20007/weather-forecast/2218409",
 				"action_id": "button-action"
 			}
 		},
 		{
 			"type": "image",
-			"image_url": "https://i1.wp.com/thetempest.co/wp-content/uploads/2017/08/The-wise-words-of-Michael-Scott-Imgur-2.jpg?w=1024&ssl=1",
+			"image_url": "https://osei.georgetown.edu/wp-content/uploads/sites/258/2020/01/SSH-Georgetown-Campus-scaled.jpg",
 			"alt_text": "inspiration"
 		},
 		{
