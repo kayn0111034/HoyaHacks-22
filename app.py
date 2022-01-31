@@ -14,7 +14,7 @@ load_dotenv()
 SLACK_APP_TOKEN = os.environ["SLACK_APP_TOKEN"]
 SLACK_BOT_TOKEN = os.environ["SLACK_BOT_TOKEN"]
 
-app = App(token=SLACK_BOT_TOKEN, name="Joke Bot")
+app = App(token=SLACK_BOT_TOKEN, name="Slack4Uni Bot")
 
 
 #returns joke
